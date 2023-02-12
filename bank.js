@@ -8,9 +8,9 @@ document.getElementById("deposite-btn").addEventListener("click", function () {
     const depositeblance = document.getElementById("deposite-blance");
 
     if (depositeValue > 0) {
-        totalDeposite+= parseInt(depositeValue)
+        totalDeposite+= parseFloat(depositeValue)
         depositeblance.innerText = `$${totalDeposite}`
-        totalBlance += parseInt(depositeValue)
+        totalBlance += parseFloat(depositeValue)
         currentBalnce.innerText = `$${totalBlance}`
         document.getElementById("deposite-input-field").value = ""
     }
@@ -21,10 +21,10 @@ document.getElementById("witdrow-btn").addEventListener("click", function () {
     const widtdrowValue = document.getElementById("witdrow-input-field").value;
     const witdrowBlance = document.getElementById("widtdrow-blance")
 
-    if(widtdrowValue>0 && widtdrowValue < totalBlance){
-        totalWidtdrow += parseInt(widtdrowValue)
+    if(widtdrowValue>0 && widtdrowValue <= totalBlance){
+        totalWidtdrow += parseFloat(widtdrowValue)
         witdrowBlance.innerText = `$${totalWidtdrow}`
-        totalBlance -= parseInt(widtdrowValue)
+        totalBlance -= parseFloat(widtdrowValue)
         currentBalnce.innerText = `$${totalBlance}`
         document.getElementById("witdrow-input-field").value = ""
     }
