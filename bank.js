@@ -18,7 +18,7 @@ document.getElementById("witdrow-btn").addEventListener("click", function () {
     const widtdrowValue = document.getElementById("witdrow-input-field").value;
     const witdrowBlance = document.getElementById("widtdrow-blance")
 
-    if(widtdrowValue>0){
+    if(widtdrowValue>0 && widtdrowValue < totalBlance){
         witdrowBlance.innerText = `$${widtdrowValue}`
         totalBlance -= parseInt(widtdrowValue)
         currentBalnce.innerText = `$${totalBlance}`
