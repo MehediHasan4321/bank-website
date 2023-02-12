@@ -6,5 +6,6 @@ document.getElementById("submit-btn").addEventListener("click",function(e){
     }else{
         alert("invalid user")
     }
+    document.getElementById("email-field").value = ""
     document.getElementById("password-field").value = ""
 })
