@@ -17,7 +17,7 @@ document.getElementById("deposite-btn").addEventListener("click", function () {
 })
 document.getElementById("witdrow-btn").addEventListener("click", function () {
     const widtdrowValue = inputFieldValueToNumber("witdrow-input-field")
-    if (widtdrowValue > 0) {
+    if (widtdrowValue > 0 ) {
         const witdrow = strToNumFromElement("widtdrow-blance")
         const current = strToNumFromElement("currnet-blance")
         const widtdrowTotoal = widtdrowValue + witdrow;
