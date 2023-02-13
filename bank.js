@@ -1,29 +1,33 @@
-const currentBalnce = document.getElementById("currnet-blance");
-let totalBalance = 1240;
-let depositeTotal =0;
-let witdrowTotal = 0;
+
+//All Event Lestener Are Here
+
 document.getElementById("deposite-btn").addEventListener("click", function () {
   
     const depositeValue = inputFieldValueToNumber("deposite-input-field");
-    const depositeBalance = document.getElementById("deposite-blance");
-    depositeTotal += depositeValue;
-    depositeBalance.innerText = `$${depositeTotal}`
-    totalBalance += depositeTotal
-    currentBalnce.innerText = `$${totalBalance}`
+    const deposite = strToNumFromElement("deposite-blance")
+    const current = strToNumFromElement("currnet-blance")
+    const depositeTotoal = depositeValue + deposite;
+    setNewValue("deposite-blance",depositeTotoal)
+    const currentTotoal = depositeTotoal + current;
+   
     
+    setNewValue("currnet-blance",currentTotoal)
+    console.log(depositeValue)
+    console.log(deposite);
+    console.log(current)
 })
 document.getElementById("witdrow-btn").addEventListener("click", function () {
     const widtdrowValue = inputFieldValueToNumber("witdrow-input-field")
-    const witdrowBlance = document.getElementById("widtdrow-blance")
-    witdrowTotal  += widtdrowValue;
-    witdrowBlance.innerText = `$${witdrowTotal}`
-    totalBalance -= witdrowTotal ;
+    const witdrow = strToNumFromElement("widtdrow-blance")
+    const current = strToNumFromElement("currnet-blance")
+    const widtdrowTotoal = widtdrowValue + witdrow;
+    const curentTotal = current - widtdrowTotoal
+    setNewValue("widtdrow-blance",widtdrowTotoal)
+    setNewValue("currnet-blance",curentTotal)
 
-    currentBalnce.innerText = `$${totalBalance}`
-
-    
 
 })
+//All Root Functions Are Here
 
 function inputFieldValueToNumber(inputId){
     let inputFieldValue = document.getElementById(inputId).value;
@@ -34,5 +38,14 @@ function inputFieldValueToNumber(inputId){
     return strToNum;
 }
 
+function strToNumFromElement(elementId){
+    const elementText = document.getElementById(elementId).innerText;
+    const removeFirstElement = elementText.substring(1);
+    const stringToNumber = parseFloat(removeFirstElement);
+    return stringToNumber;  
+}
 
-
+function setNewValue (elementId,newValue){
+    const elementName = document.getElementById(elementId);
+    elementName.innerText = `$${newValue}`
+}
