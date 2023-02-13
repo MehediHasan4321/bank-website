@@ -1,33 +1,38 @@
 const currentBalnce = document.getElementById("currnet-blance");
-let totalBlance = 1240
-let totalDeposite = 0;
-let totalWidtdrow = 0;
+let totalBalance = 1240;
+let depositeTotal =0;
+let witdrowTotal = 0;
 document.getElementById("deposite-btn").addEventListener("click", function () {
+  
+    const depositeValue = inputFieldValueToNumber("deposite-input-field");
+    const depositeBalance = document.getElementById("deposite-blance");
+    depositeTotal += depositeValue;
+    depositeBalance.innerText = `$${depositeTotal}`
+    totalBalance += depositeTotal
+    currentBalnce.innerText = `$${totalBalance}`
     
-    const depositeValue = document.getElementById("deposite-input-field").value;
-    const depositeblance = document.getElementById("deposite-blance");
-
-    if (depositeValue > 0) {
-        totalDeposite+= parseFloat(depositeValue)
-        depositeblance.innerText = `$${totalDeposite}`
-        totalBlance += parseFloat(depositeValue)
-        currentBalnce.innerText = `$${totalBlance}`
-        document.getElementById("deposite-input-field").value = ""
-    }
-
-
 })
 document.getElementById("witdrow-btn").addEventListener("click", function () {
-    const widtdrowValue = document.getElementById("witdrow-input-field").value;
+    const widtdrowValue = inputFieldValueToNumber("witdrow-input-field")
     const witdrowBlance = document.getElementById("widtdrow-blance")
+    witdrowTotal  += widtdrowValue;
+    witdrowBlance.innerText = `$${witdrowTotal}`
+    totalBalance -= witdrowTotal ;
 
-    if(widtdrowValue>0 && widtdrowValue <= totalBlance){
-        totalWidtdrow += parseFloat(widtdrowValue)
-        witdrowBlance.innerText = `$${totalWidtdrow}`
-        totalBlance -= parseFloat(widtdrowValue)
-        currentBalnce.innerText = `$${totalBlance}`
-        document.getElementById("witdrow-input-field").value = ""
-    }
+    currentBalnce.innerText = `$${totalBalance}`
+
+    
 
 })
+
+function inputFieldValueToNumber(inputId){
+    let inputFieldValue = document.getElementById(inputId).value;
+
+    const strToNum = parseFloat(inputFieldValue);
+    document.getElementById(inputId).value = ""   
+    
+    return strToNum;
+}
+
+
 
